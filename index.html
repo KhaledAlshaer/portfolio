@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | SOC Analyst Portfolio</title>
+    
+    <!-- External Tools -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- YOUR NEW CSS FILE LINK -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0f172a] text-slate-200">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="text-xl font-bold tracking-widest text-cyan-400 mono">SEC_OPS ></span>
+            <div class="space-x-8 hidden md:block text-sm uppercase tracking-wider">
+                <a href="#about" class="hover:text-cyan-400 transition">About</a>
+                <a href="#projects" class="hover:text-cyan-400 transition">Investigations</a>
+                <a href="#skills" class="hover:text-cyan-400 transition">Toolkit</a>
+                <a href="#contact" class="bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2 rounded-md transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-24 px-6 border-b border-slate-800/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white">Your Name</h1>
+            <div class="text-cyan-400 mono text-xl md:text-2xl mb-8">
+                <span id="typing"></span><span class="animate-pulse">_</span>
+            </div>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                Cybersecurity student specializing in **SOC Operations**, threat detection, and incident response.
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section (with reveal class) -->
+    <section id="about" class="py-20 px-6 reveal">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-cyan-500">01.</span> About Me
+            </h2>
+            <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
+                <p class="text-slate-300 leading-relaxed">
+                    I am dedicated to protecting organizational assets through proactive monitoring. 
+                    I have a deep interest in how systems work under the hood, from compiler design to network protocols.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (with reveal class) -->
+    <section id="projects" class="py-20 bg-slate-900/50 reveal">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-12 flex items-center gap-3">
+                <span class="text-cyan-500">02.</span> Recent Investigations
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="project-card p-8 rounded-xl">
+                    <div class="text-cyan-400 mb-6 text-3xl"><i class="fas fa-terminal"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Log Analysis</h3>
+                    <p class="text-slate-400 text-sm mb-6">Detected brute-force attempts using SIEM methodologies.</p>
+                </div>
+                <div class="project-card p-8 rounded-xl">
+                    <div class="text-cyan-400 mb-6 text-3xl"><i class="fas fa-envelope-open-text"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Phishing Analysis</h3>
+                    <p class="text-slate-400 text-sm mb-6">Identified spoofed domains and extracted malicious URLs.</p>
+                </div>
+                <div class="project-card p-8 rounded-xl">
+                    <div class="text-cyan-400 mb-6 text-3xl"><i class="fas fa-network-wired"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Traffic Analysis</h3>
+                    <p class="text-slate-400 text-sm mb-6">Investigated DNS traffic using Wireshark for C2 patterns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (with reveal class) -->
+    <section id="skills" class="py-20 px-6 reveal">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-12">Technical Toolkit</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">SIEM</div>
+                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Wireshark</div>
+                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Nmap</div>
+                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Linux</div>
+                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">IR</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-slate-600 text-xs tracking-widest mono uppercase">
+        System Status: Online | © 2026 Your Name
+    </footer>
+
+    <!-- YOUR NEW JAVASCRIPT FILE LINK -->
+    <script src="script.js"></script>
+</body>
+</html>
