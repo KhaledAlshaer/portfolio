@@ -1,3 +1,32 @@
+const cursorDot = document.querySelector(".cursor-dot");
+const cursorOutline = document.querySelector(".cursor-outline");
+
+window.addEventListener("mousemove", (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    // The dot follows the mouse exactly
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    // The outline follows with a smooth animation
+    cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+});
+
+// Expand cursor on hoverable elements
+const hoverables = document.querySelectorAll('a, button, .project-card, .contact-card');
+hoverables.forEach((item) => {
+    item.addEventListener("mouseover", () => {
+        cursorOutline.classList.add("cursor-hover");
+    });
+    item.addEventListener("mouseleave", () => {
+        cursorOutline.classList.remove("cursor-hover");
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Typing Effect Logic
