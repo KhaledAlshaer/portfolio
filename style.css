@@ -14,6 +14,20 @@ body {
     overflow-x: hidden;
 }
 
+/* --- Education Timeline --- */
+.education-item {
+    padding-bottom: 2rem;
+}
+
+.education-item:last-child {
+    padding-bottom: 0;
+}
+
+.education-item:hover .item-dot {
+    background-color: var(--accent-color);
+    shadow: 0 0 10px var(--accent-color);
+}
+
 /* --- Interactivity: Scroll Fade-In --- */
 .reveal {
     opacity: 0;
