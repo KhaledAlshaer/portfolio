@@ -28,6 +28,50 @@ body {
     shadow: 0 0 10px var(--accent-color);
 }
 
+/* --- Custom Cursor Styles --- */
+/* Hide the real cursor on desktop */
+@media (min-width: 768px) {
+    html, body {
+        cursor: none;
+    }
+    
+    a, button, .project-card, .contact-card {
+        cursor: none;
+    }
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22d3ee;
+    box-shadow: 0 0 10px #22d3ee;
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(34, 211, 238, 0.5);
+}
+
+.cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none; /* Crucial: lets you click "through" the dots */
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Hover Effect: When hovering over links or buttons */
+.cursor-hover {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(34, 211, 238, 0.1);
+    border-color: #22d3ee;
+}
+
 /* --- Interactivity: Scroll Fade-In --- */
 .reveal {
     opacity: 0;
