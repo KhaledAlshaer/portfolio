@@ -70,3 +70,31 @@ document.addEventListener('DOMContentLoaded', () => {
         glow.style.top = e.clientY + 'px';
     });
 });
+
+// Toggle Function for the Case Study Dropdown
+function toggleCaseStudy() {
+    const studyPanel = document.getElementById("conti-case-study");
+    if (studyPanel.classList.contains("hidden")) {
+        studyPanel.classList.remove("hidden");
+        // Smoothly scroll the user to the panel view space
+        setTimeout(() => {
+            studyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+    } else {
+        studyPanel.classList.add("hidden");
+    }
+}
+
+// Toggle Function for the Phishing Case Study Dropdown
+function togglePhishingCaseStudy() {
+    const phishingPanel = document.getElementById("phishing-case-study");
+    if (phishingPanel.classList.contains("hidden")) {
+        phishingPanel.classList.remove("hidden");
+        // Smoothly scroll the user to the panel view space
+        setTimeout(() => {
+            phishingPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
+    } else {
+        phishingPanel.classList.add("hidden");
+    }
+}

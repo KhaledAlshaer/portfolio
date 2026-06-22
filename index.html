@@ -98,25 +98,245 @@
     <section id="projects" class="py-20 bg-slate-900/50 reveal">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-2xl font-bold mb-12 flex items-center gap-3">
-                <span class="text-cyan-500">02.</span> Recent Investigations
+                <span class="text-cyan-500">03.</span> Recent Investigations
             </h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="project-card p-8 rounded-xl">
-                    <div class="text-cyan-400 mb-6 text-3xl"><i class="fas fa-terminal"></i></div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Log Analysis</h3>
-                    <p class="text-slate-400 text-sm mb-6">Detected brute-force attempts using SIEM methodologies.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div onclick="toggleCaseStudy()" class="project-card p-8 rounded-xl cursor-pointer border border-cyan-500/30 bg-slate-800/40 hover:scale-[1.02] transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-cyan-400 text-3xl"><i class="fas fa-shield-virus"></i></div>
+                        <span class="text-xs font-mono bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded border border-cyan-500/20">DFIR Case Study</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Conti Ransomware Attack</h3>
+                    <p class="text-slate-400 text-sm mb-6">Deep-dive SIEM reconstruction of a simulated ransomware intrusion using Splunk enterprise event logs.</p>
+                    <span class="text-cyan-400 text-xs font-mono group flex items-center gap-2">
+                        View Full Incident Report <i class="fas fa-arrow-right text-[10px]"></i>
+                    </span>
                 </div>
-                <div class="project-card p-8 rounded-xl">
-                    <div class="text-cyan-400 mb-6 text-3xl"><i class="fas fa-envelope-open-text"></i></div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Phishing Analysis</h3>
-                    <p class="text-slate-400 text-sm mb-6">Identified spoofed domains and extracted malicious URLs.</p>
+                
+                <div onclick="togglePhishingCaseStudy()" class="project-card p-8 rounded-xl cursor-pointer border border-cyan-500/30 bg-slate-800/40 hover:scale-[1.02] transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-cyan-400 text-3xl"><i class="fas fa-envelope-open-text"></i></div>
+                        <span class="text-xs font-mono bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded border border-cyan-500/20">Email Forensics</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Phishing Artifact Analysis</h3>
+                    <p class="text-slate-400 text-sm mb-6">Header inspection, credential-harvesting tracking, and automated malware reputation scanning across targeted threat campaigns.</p>
+                    <span class="text-cyan-400 text-xs font-mono group flex items-center gap-2">
+                        View Full Investigation <i class="fas fa-arrow-right text-[10px]"></i>
+                    </span>
                 </div>
-                <div class="project-card p-8 rounded-xl">
-                    <div class="text-cyan-400 mb-6 text-3xl"><i class="fas fa-network-wired"></i></div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Traffic Analysis</h3>
-                    <p class="text-slate-400 text-sm mb-6">Investigated DNS traffic using Wireshark for C2 patterns.</p>
+
+                <div class="project-card p-8 rounded-xl bg-slate-800/20 opacity-75">
+                    <div class="text-slate-400 mb-6 text-3xl"><i class="fas fa-network-wired"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Network Traffic Forensic Analysis</h3>
+                    <p class="text-slate-400 text-sm mb-6">Investigated command-and-control (C2) callback beacons using Wireshark and Zeek connection records.</p>
                 </div>
             </div>
+
+            <div id="conti-case-study" class="hidden mt-8 border border-slate-700 bg-slate-950 rounded-xl overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center font-mono text-xs">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+                        <span class="text-slate-400 ml-2">incident_report_conti_ransomware.log</span>
+                    </div>
+                    <button onclick="toggleCaseStudy()" class="text-slate-500 hover:text-white transition"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="p-8 space-y-8">
+                    <div>
+                        <h4 class="text-cyan-400 font-mono text-sm mb-1 uppercase tracking-widest">// Executive Summary</h4>
+                        <h3 class="text-2xl font-bold text-white mb-3">Reconstructing the Conti Ransomware Killchain</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed max-w-4xl">
+                            This investigation details the end-to-end tactical timeline of a simulated ransomware attack executed by the Conti threat group. By executing defensive event correlation on compromised IIS web servers and Windows endpoints within an enterprise environment using <strong>Splunk SIEM</strong>, the adversary’s actions were isolated, traced, and cataloged into actionable Indicators of Compromise (IOCs).
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800">
+                            <div class="text-cyan-400 font-mono text-xs mb-2">[PHASE 01: INITIAL ACCESS & WEB SHELL PERSISTENCE]</div>
+                            <p class="text-slate-300 text-sm mb-4">
+                                Scanned corporate internet-facing services using precise log filtering metrics. Analyzing web activity isolated a suspicious anomalous access pattern on an exchange landing directory.
+                            </p>
+                            <div class="bg-black/50 p-3 rounded font-mono text-xs text-green-400 border border-slate-800 overflow-x-auto">
+                                sourcetype="iis" cs_method=POST<br>
+                                <span class="text-cyan-400">Target Endpoint:</span> /owa/auth/i3gfPctK1c2x.aspx
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800">
+                            <div class="text-cyan-400 font-mono text-xs mb-2">[PHASE 02: MASQUERADING & ACCOUNT PROVISIONING]</div>
+                            <p class="text-slate-300 text-sm mb-4">
+                                The threat actor utilized process masquerading to execute administrative commands while evading default security analytics engines.
+                            </p>
+                            <div class="bg-black/50 p-3 rounded font-mono text-xs text-red-400 border border-slate-800 overflow-x-auto">
+                                <span class="text-slate-500"># Execution Path:</span><br>
+                                c:\Users\Administrator\Documents\cmd.exe<br>
+                                <span class="text-slate-500"># Backdoor User Added:</span><br>
+                                net user /add securityninja hardToHack123$
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800">
+                            <div class="text-cyan-400 font-mono text-xs mb-2">[PHASE 03: PROCESS MIGRATION & EVASION]</div>
+                            <p class="text-slate-300 text-sm mb-4">
+                                Audited endpoint creation telemetry using internal event filters to capture systemic evasion maneuvers and execution handoffs.
+                            </p>
+                            <div class="bg-black/50 p-3 rounded font-mono text-xs text-yellow-400 border border-slate-800 overflow-x-auto">
+                                <span class="text-cyan-400">EventCode=8</span> (Source Process Migration)<br>
+                                <span class="text-slate-500">From:</span> powershell.exe<br>
+                                <span class="text-slate-500">To:</span> \wbem\unsecapp.exe (WMI Subsystem)
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800">
+                            <div class="text-cyan-400 font-mono text-xs mb-2">[PHASE 04: CREDENTIAL DUMPING]</div>
+                            <p class="text-slate-300 text-sm mb-4">
+                                Once migrated to the system subsystem framework, the execution binary was redirected to extract security hashes straight from system volatile storage.
+                            </p>
+                            <div class="bg-black/50 p-3 rounded font-mono text-xs text-purple-400 border border-slate-800 overflow-x-auto">
+                                Target Memory Space: lsass.exe<br>
+                                Objective: Local Security Authority Subsystem hash retrieval
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-cyan-400 font-mono text-sm mb-4 uppercase tracking-widest">// Actionable Intelligence (IOC Table)</h4>
+                        <div class="overflow-x-auto rounded-lg border border-slate-800">
+                            <table class="w-full text-left font-mono text-xs text-slate-300">
+                                <thead class="bg-slate-900 text-slate-400 text-xs uppercase tracking-wider">
+                                    <tr>
+                                        <th class="p-4 border-b border-slate-800">Artifact Type</th>
+                                        <th class="p-4 border-b border-slate-800">Indicator Value</th>
+                                        <th class="p-4 border-b border-slate-800">Security Impact Reference</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-800 bg-slate-950/40">
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Malicious Web Directory</td>
+                                        <td class="p-4 text-green-400">/owa/auth/i3gfPctK1c2x.aspx</td>
+                                        <td class="p-4">Persistent back-door access mechanism via malicious IIS POST uploads.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Masquerading Execution Binary</td>
+                                        <td class="p-4 text-red-400">...\Documents\cmd.exe</td>
+                                        <td class="p-4">Execution of arbitrary shell functions using atypical system directory paths.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Unauthorized Local Account</td>
+                                        <td class="p-4 text-yellow-400">securityninja</td>
+                                        <td class="p-4">Local privilege exploitation and persistence account setup via system shell.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Defensive Process Handoff</td>
+                                        <td class="p-4">EventCode 8 -> unsecapp.exe</td>
+                                        <td class="p-4">WMI framework evasion behavior to mask direct system access.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phishing-case-study" class="hidden mt-8 border border-slate-700 bg-slate-950 rounded-xl overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center font-mono text-xs">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+                        <span class="text-slate-400 ml-2">email_analysis_forensics.log</span>
+                    </div>
+                    <button onclick="togglePhishingCaseStudy()" class="text-slate-500 hover:text-white transition"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="p-8 space-y-8">
+                    <div>
+                        <h4 class="text-cyan-400 font-mono text-sm mb-1 uppercase tracking-widest">// Case Study Overviews</h4>
+                        <h3 class="text-2xl font-bold text-white mb-3">Dissecting Malicious Email Architecture & Payloads</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed max-w-4xl">
+                            This section documents the technical analysis of two targeted phishing campaigns. By checking raw email transportation data headers, converting obfuscated payload delivery metrics safely within sandboxed execution environments, and tracking downstream attacker command frameworks, active indicators of compromise were mapped.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800 flex flex-col justify-between">
+                            <div>
+                                <div class="text-cyan-400 font-mono text-xs mb-2">[CAMPAIGN 01: THE GREENHOLT PHISH]</div>
+                                <p class="text-slate-300 text-sm mb-4">
+                                    Analyzed raw text transportation blocks to trace malicious delivery routing records. Verified authentication compliance rules and isolated external hosting locations using reputation checks.
+                                </p>
+                            </div>
+                            <div class="bg-black/50 p-4 rounded font-mono text-xs space-y-2 border border-slate-800 text-slate-300">
+                                <div><span class="text-cyan-400">Originating ASN:</span> Hostwinds LLC (Kansas, USA)</div>
+                                <div><span class="text-cyan-400">Security Scans:</span> SPF Lookup & DMARC Policy Evaluation</div>
+                                <div><span class="text-red-400">Payload Signature:</span> Trojan with active file-spreading capabilities (SHA-256 Verified via VirusTotal)</div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800 flex flex-col justify-between">
+                            <div>
+                                <div class="text-cyan-400 font-mono text-xs mb-2">[CAMPAIGN 02: SNAPPED PHISH-ING LINE]</div>
+                                <p class="text-slate-300 text-sm mb-4">
+                                    Investigated a dual-layered impersonation attack attempting to leverage trusted financial brands to distribute multi-stage cloud service credential harvesting schemes.
+                                </p>
+                            </div>
+                            <div class="bg-black/50 p-4 rounded font-mono text-xs space-y-1 border border-slate-800 text-slate-300">
+                                <div><span class="text-cyan-400">Spoofed Sender:</span> Accounts.Payable@groupmarketingonline.icu</div>
+                                <div><span class="text-cyan-400">Visual Lure:</span> Fake PayPal invoice routing to a spoofed Microsoft OneDrive link</div>
+                                <div><span class="text-yellow-400">Malicious Link:</span> https://kennaroads.buzz/data/Update365/office365</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-900 rounded-lg border border-slate-800">
+                        <h4 class="text-cyan-400 font-mono text-xs mb-3 uppercase tracking-widest">// Sandboxed Deobfuscation & Exfiltration Extraction</h4>
+                        <p class="text-slate-300 text-sm mb-4">
+                            To avoid direct endpoint exposure to dangerous scripts, the attachment layout payload was converted from Base64 raw strings back to isolated document structures. Extraction of downstream staging files uncovered the threat actor's storage and validation backend layout.
+                        </p>
+                        <div class="bg-black/80 p-4 rounded-lg font-mono text-xs space-y-2 border border-slate-800 text-slate-400">
+                            <div><span class="text-green-400">$ cat submit.php | grep "mail("</span></div>
+                            <div class="text-red-400 pl-4"># Threat Actor Exfiltration Email Address Identified: m3npat@yandex.com</div>
+                            <div class="text-slate-500 mt-2">// Opsec Failure: The threat actor misconfigured the remote directory permissions, exposing the central credentials database collection file right on the landing server layout infrastructure.</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-cyan-400 font-mono text-sm mb-4 uppercase tracking-widest">// Extracted Phishing Threat Intel Matrix</h4>
+                        <div class="overflow-x-auto rounded-lg border border-slate-800">
+                            <table class="w-full text-left font-mono text-xs text-slate-300">
+                                <thead class="bg-slate-900 text-slate-400 text-xs uppercase tracking-wider">
+                                    <tr>
+                                        <th class="p-4 border-b border-slate-800">Indicator Target</th>
+                                        <th class="p-4 border-b border-slate-800">Extracted Threat Signature / URL</th>
+                                        <th class="p-4 border-b border-slate-800">Threat Label / Classification</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-800 bg-slate-950/40">
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Malicious Staging Repo</td>
+                                        <td class="p-4 text-red-400">Update.zip</td>
+                                        <td class="p-4 text-purple-400">Trojan.phishmailer / PhishingMS (33/64 Engine Flags)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Credential Harvest Link</td>
+                                        <td class="p-4 text-yellow-400">kennaroads.buzz/.../office365</td>
+                                        <td class="p-4">Spoofed OneDrive Authentication Interface Bypass Kit.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Exfiltration Target</td>
+                                        <td class="p-4 text-red-400">m3npat@yandex.com</td>
+                                        <td class="p-4">Threat actor backend collection point for exfiltrated tokens.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
@@ -133,8 +353,9 @@
                 <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Phishing Analysis</div>
                 <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Wireshark</div>
                 <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Nmap</div>
-                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Linux</div>
-                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">IR</div>
+                <!-- <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Linux</div> -->
+                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Volatility</div>
+                <div class="p-4 bg-slate-800 rounded border border-slate-700 mono text-sm">Autopsy</div>
             </div>
         </div>
     </section>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght=300;400;700&family=Inter:wght=400;700&display=swap');
 
 :root {
     --bg-color: #0f172a;
@@ -25,7 +25,8 @@ body {
 
 .education-item:hover .item-dot {
     background-color: var(--accent-color);
-    shadow: 0 0 10px var(--accent-color);
+    /* FIXED: Changed 'shadow' to 'box-shadow' */
+    box-shadow: 0 0 10px var(--accent-color); 
 }
 
 /* --- Custom Cursor Styles --- */
@@ -61,7 +62,7 @@ body {
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none; /* Crucial: lets you click "through" the dots */
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
 /* Hover Effect: When hovering over links or buttons */
@@ -70,6 +71,12 @@ body {
     height: 60px;
     background-color: rgba(34, 211, 238, 0.1);
     border-color: #22d3ee;
+}
+
+/* ADDED: Active click state for feedback when navigating */
+body:active .cursor-outline {
+    transform: translate(-50%, -50%) scale(0.8);
+    border-color: #818cf8;
 }
 
 /* --- Interactivity: Scroll Fade-In --- */
@@ -90,6 +97,7 @@ body {
 .gradient-text {
     background: linear-gradient(90deg, #22d3ee, #818cf8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -106,7 +114,7 @@ body {
     transform: scale(1.02);
 }
 
-/* --- Mouse Cursor Glow (Optional Extra) --- */
+/* --- Mouse Cursor Glow --- */
 .cursor-glow {
     width: 400px;
     height: 400px;
