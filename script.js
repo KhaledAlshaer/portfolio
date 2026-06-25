@@ -71,40 +71,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Toggle Function for the Case Study Dropdown
+// Central helper function to hide all case study panels
+function closeAllCaseStudies() {
+    const panels = [
+        "conti-case-study",
+        "phishing-case-study",
+        "volttyphoon-case-study"
+    ];
+    
+    panels.forEach(id => {
+        const panel = document.getElementById(id);
+        if (panel) {
+            panel.classList.add("hidden");
+        }
+    });
+}
+
+// Upgraded Toggle Function for the Conti Panel
 function toggleCaseStudy() {
-    const studyPanel = document.getElementById("conti-case-study");
-    if (studyPanel.classList.contains("hidden")) {
-        studyPanel.classList.remove("hidden");
-        // Smoothly scroll the user to the panel view space
+    const container = document.getElementById("conti-case-study");
+    if (!container) return;
+
+    if (container.classList.contains("hidden")) {
+        closeAllCaseStudies(); // Close whichever one is currently open first
+        container.classList.remove("hidden");
         setTimeout(() => {
-            studyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+            container.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 50);
     } else {
-        studyPanel.classList.add("hidden");
+        container.classList.add("hidden");
     }
 }
 
-// Toggle Function for the Phishing Case Study Dropdown
+// Upgraded Toggle Function for the Phishing Panel
 function togglePhishingCaseStudy() {
-    const phishingPanel = document.getElementById("phishing-case-study");
-    if (phishingPanel.classList.contains("hidden")) {
-        phishingPanel.classList.remove("hidden");
-        // Smoothly scroll the user to the panel view space
+    const container = document.getElementById("phishing-case-study");
+    if (!container) return;
+
+    if (container.classList.contains("hidden")) {
+        closeAllCaseStudies(); // Close whichever one is currently open first
+        container.classList.remove("hidden");
         setTimeout(() => {
-            phishingPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+            container.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 50);
     } else {
-        phishingPanel.classList.add("hidden");
+        container.classList.add("hidden");
     }
 }
 
+// Upgraded Toggle Function for the Volt Typhoon Panel
 function toggleVoltTyphoonCaseStudy() {
-    const container = document.getElementById('volttyphoon-case-study');
-    if (container.classList.contains('hidden')) {
-        container.classList.remove('hidden');
-        container.scrollIntoView({ behavior: 'smooth' });
+    const container = document.getElementById("volttyphoon-case-study");
+    if (!container) return;
+
+    if (container.classList.contains("hidden")) {
+        closeAllCaseStudies(); // Close whichever one is currently open first
+        container.classList.remove("hidden");
+        setTimeout(() => {
+            container.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
     } else {
-        container.classList.add('hidden');
+        container.classList.add("hidden");
     }
 }
